@@ -56,8 +56,8 @@ resource "null_resource" "hello" {
 $
 ```
 
-To this:
-_"terraform apply" should say nothing about delete/create._
+To this:\
+_"terraform apply" should say nothing about `delete/create`._
 ```
 $ tree
 .
@@ -94,8 +94,8 @@ output "rand_name_output" {
 ```
 
 
-# Steps on how to: move resource random_pet.name in a module
-_next "terraform apply" should say nothing about delete/create._
+# Steps: move resource random_pet.name in a module
+_next "terraform apply" should say nothing about `delete/create`._\
 Create name_generate dir and main.tf in it
 ```
 mkdir name_generate
@@ -103,7 +103,7 @@ mkdir name_generate
 ```
 touch name_generate/main.tf
 ```
-Move this the random_pet.name config from main.tf into ./name_generate/main.tf.\
+Move this the random_pet.name config from main.tf into ./name_generate/main.tf.\ 
 Add also output to be referenced from toot module.
 ```
 resource "random_pet" "name" {
@@ -131,11 +131,15 @@ Move resource state random_pet.name to module
 terraform state mv random_pet.name module.gen_a_name.random_pet.name
 ```
 
-Verify
+# Verify
 ```
 terraform init
 ```
 ```
-terraform apply -auto-approve
+terraform plan
+```
+```
+terraform apply
 ```
 
+# Sample output
